@@ -56,11 +56,11 @@ namespace ConsoleLibrary
           Library.ViewBooks();
           break;
         case "2":
-          Library.ViewBooks();
+          Library.ViewBooks(true);
           Library.CheckOut();
           break;
         case "3":
-          //   Library.ReturnBook;  
+          Library.ReturnBook();
           break;
         case "4":
           InLibrary = false;

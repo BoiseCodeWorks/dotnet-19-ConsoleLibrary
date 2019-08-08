@@ -37,14 +37,27 @@ namespace ConsoleLibrary.Models
     public void ReturnBook()
     {
       Console.WriteLine("Please enter the book title you are returning.");
-      var bookReturn = Console.ReadLine();
+      Book bookToReturn = null;
+      while (bookToReturn == null)
+      {
+        string bookTitle = Console.ReadLine().ToUpper();
+        bookToReturn = Books.Find(b => b.Title.ToUpper() == bookTitle);
+        //NOTE our user is stuck in this until they type a valid book title
+      }
+      bookToReturn.Available = true;
+      System.Console.WriteLine($"Thanks for returning {bookToReturn.Title}!");
     }
 
 
-    public void ViewBooks()
+    public void ViewBooks(bool onlyAvailable = false)
     {
       int bookCount = 1;
-      foreach (var book in Books)
+      List<Book> books = Books;
+      if (onlyAvailable)
+      {
+        books = books.FindAll(b => b.Available);
+      }
+      foreach (var book in books)
       {
         Console.WriteLine($"Book Count: {bookCount} Title: {book.Title} By: {book.Author}");
         bookCount++;
