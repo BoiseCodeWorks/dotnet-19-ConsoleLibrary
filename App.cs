@@ -6,6 +6,7 @@ namespace ConsoleLibrary
   public class App
   {
     private Library Library { get; set; }
+    public bool InLibrary { get; set; }
     public void Setup()
     {
       //TODO create instances of some books
@@ -18,6 +19,7 @@ namespace ConsoleLibrary
       Library.Books.Add(hp);
       Library.Books.Add(dune);
       Library.Books.Add(patsy);
+
     }
 
     public void Run()
@@ -25,8 +27,8 @@ namespace ConsoleLibrary
       //TODO write our application
       Console.WriteLine("Welcome to the Library!");
       //1. we need a greeting and menu navigation
-      bool inLibrary = true;
-      while (inLibrary)
+
+      while (InLibrary)
       {
         DisplayMenu();
 
@@ -52,6 +54,17 @@ namespace ConsoleLibrary
         case "1":
           Library.ViewBooks();
           break;
+        case "2":
+          //   Library.ReturnBook;  
+          break;
+        case "3":
+          InLibrary = false;
+          break;
+        default:
+
+          Console.WriteLine("Please enter 1, 2, or 3!");
+          HandleUserInput();
+          break;
       }
     }
 
@@ -59,6 +72,7 @@ namespace ConsoleLibrary
     public App()
     {
       Library = new Library();
+      InLibrary = true;
     }
   }
 }
