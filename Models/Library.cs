@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System;
 
 namespace ConsoleLibrary.Models
 {
@@ -9,14 +10,24 @@ namespace ConsoleLibrary.Models
 
     public void CheckOut()
     {
+      Console.WriteLine("Which book number?: ");
+      int index;
+      bool isIndex = false;
+      while (!isIndex)
+      {
+        isIndex = Int32.TryParse(Console.ReadLine(), out index);
+      }
 
     }
 
+
     public void ViewBooks()
     {
+      int bookCount = 1;
       foreach (var book in Books)
       {
-
+        Console.WriteLine($"Book Count: {bookCount} Title: {book.Title} By: {book.Author}");
+        bookCount++;
       }
     }
     public Library()
