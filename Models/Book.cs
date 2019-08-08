@@ -13,5 +13,7 @@ namespace ConsoleLibrary.Models
       Pages = pages;
       Available = available;
     }
+
+
   }
 }
