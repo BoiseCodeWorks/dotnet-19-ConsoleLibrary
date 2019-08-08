@@ -11,13 +11,27 @@ namespace ConsoleLibrary.Models
     public void CheckOut()
     {
       Console.WriteLine("Which book number?: ");
-      int index;
+      int index = 0;
       bool isIndex = false;
       while (!isIndex)
       {
         isIndex = Int32.TryParse(Console.ReadLine(), out index);
+        if (!isIndex)
+        {
+          Console.WriteLine("Please enter a number: ");
+          continue;
+        }
+
+        if (index < 1 || index > Books.Count)
+        {
+          Console.WriteLine("Not a valid number.");
+          isIndex = false;
+        }
       }
 
+      Book custChoice = Books[index - 1];
+      custChoice.Available = false;
+      Console.WriteLine($"You checked out {custChoice.Title}.");
     }
 
 
