@@ -40,8 +40,9 @@ namespace ConsoleLibrary
     public void DisplayMenu()
     {
       Console.WriteLine("1. View books");
-      Console.WriteLine("2. Return a book");
-      Console.WriteLine("3. Leave the library");
+      Console.WriteLine("2. Check out");
+      Console.WriteLine("3. Return a book");
+      Console.WriteLine("4. Leave the library");
       Console.WriteLine("Please enter a number");
       HandleUserInput();
     }
@@ -55,9 +56,13 @@ namespace ConsoleLibrary
           Library.ViewBooks();
           break;
         case "2":
-          //   Library.ReturnBook;  
+          Library.ViewBooks();
+          Library.CheckOut();
           break;
         case "3":
+          //   Library.ReturnBook;  
+          break;
+        case "4":
           InLibrary = false;
           break;
         default:

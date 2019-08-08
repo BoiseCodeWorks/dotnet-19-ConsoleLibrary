@@ -34,6 +34,12 @@ namespace ConsoleLibrary.Models
       Console.WriteLine($"You checked out {custChoice.Title}.");
     }
 
+    public void ReturnBook()
+    {
+      Console.WriteLine("Please enter the book title you are returning.");
+      var bookReturn = Console.ReadLine();
+    }
+
 
     public void ViewBooks()
     {
