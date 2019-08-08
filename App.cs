@@ -66,8 +66,7 @@ namespace ConsoleLibrary
           InLibrary = false;
           break;
         default:
-
-          Console.WriteLine("Please enter 1, 2, or 3!");
+          Console.WriteLine("Please enter 1, 2, 3, or 4!");
           HandleUserInput();
           break;
       }

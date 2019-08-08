@@ -13,6 +13,7 @@ namespace ConsoleLibrary.Models
       Console.WriteLine("Which book number?: ");
       int index = 0;
       bool isIndex = false;
+      List<Book> books = Books.FindAll(b => b.Available);
       while (!isIndex)
       {
         isIndex = Int32.TryParse(Console.ReadLine(), out index);
@@ -22,14 +23,14 @@ namespace ConsoleLibrary.Models
           continue;
         }
 
-        if (index < 1 || index > Books.Count)
+        if (index < 1 || index > books.Count)
         {
           Console.WriteLine("Not a valid number.");
           isIndex = false;
         }
       }
 
-      Book custChoice = Books[index - 1];
+      Book custChoice = books[index - 1];
       custChoice.Available = false;
       Console.WriteLine($"You checked out {custChoice.Title}.");
     }
@@ -51,6 +52,7 @@ namespace ConsoleLibrary.Models
 
     public void ViewBooks(bool onlyAvailable = false)
     {
+      var colorOG = Console.ForegroundColor;
       int bookCount = 1;
       List<Book> books = Books;
       if (onlyAvailable)
@@ -59,8 +61,13 @@ namespace ConsoleLibrary.Models
       }
       foreach (var book in books)
       {
+        if (!book.Available)
+        {
+          Console.ForegroundColor = ConsoleColor.Red;
+        }
         Console.WriteLine($"Book Count: {bookCount} Title: {book.Title} By: {book.Author}");
         bookCount++;
+        Console.ForegroundColor = colorOG;
       }
     }
     public Library()
